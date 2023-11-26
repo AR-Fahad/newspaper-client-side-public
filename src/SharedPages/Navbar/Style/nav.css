@@ -1,0 +1,7 @@
+#navbar #large a.active {
+  text-decoration: underline;
+}
+
+#navbar #medium a.active {
+  color: rgb(199, 139, 254);
+}
