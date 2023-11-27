@@ -4,10 +4,14 @@ import HomeSlider from "./HomeSlider/HomeSlider";
 import HomeStatistics from "./HomeStatistics/HomeStatistics";
 import about1 from "../../assets/man-about.jpg";
 import about2 from "../../assets/about.jpg";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        <title>NewsNook | Home</title>
+      </Helmet>
       <HomeSlider></HomeSlider>
       <HomePublisher></HomePublisher>
       <div className="hero min-h-screen bg-base-200">
@@ -47,8 +51,8 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <HomeStatistics></HomeStatistics>
       <HomePlans></HomePlans>
+      <HomeStatistics></HomeStatistics>
     </div>
   );
 };

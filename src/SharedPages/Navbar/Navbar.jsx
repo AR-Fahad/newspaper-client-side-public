@@ -81,7 +81,15 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-xs md:btn-sm">Login</button>
+        <p>
+          <Link className="hover:underline" to="/login">
+            Login
+          </Link>{" "}
+          |{" "}
+          <Link className="hover:underline" to="/register">
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );
