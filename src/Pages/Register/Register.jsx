@@ -112,7 +112,7 @@ const Register = () => {
                 <input
                   type="submit"
                   value="Register"
-                  className="btn border-none bg-purple-500 text-white btn-outline"
+                  className="btn border-purple-500 text-purple-500 btn-outline"
                 />
               </div>
             </form>

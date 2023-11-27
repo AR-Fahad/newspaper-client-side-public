@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Hamburger from "hamburger-react";
 import "./Style/nav.css";
 import logo from "../../assets/logo.png";
+import { AuthContext } from "../../Provider/AuthProvider";
+import profile from "../../assets/profile.jpg";
 const Navbar = () => {
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isOpen, setOpen] = useState(false);
+  const { user, userLogout } = useContext(AuthContext);
   const navLink = (
     <>
       <li>
@@ -81,15 +84,32 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <p>
-          <Link className="hover:underline" to="/login">
-            Login
-          </Link>{" "}
-          |{" "}
-          <Link className="hover:underline" to="/register">
-            Register
-          </Link>
-        </p>
+        {!user ? (
+          <p>
+            <Link className="hover:underline" to="/login">
+              Login
+            </Link>{" "}
+            |{" "}
+            <Link className="hover:underline" to="/register">
+              Register
+            </Link>
+          </p>
+        ) : (
+          <div className="flex gap-1 items-center">
+            <Link to="/myProfile">
+              <img
+                className="w-8 md:w-10 rounded-full"
+                src={user?.photoURL ? user.photoURL : profile}
+              />
+            </Link>
+            <button
+              onClick={userLogout}
+              className="btn btn-xs md:btn-sm btn-outline border-white text-white"
+            >
+              Logout
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
