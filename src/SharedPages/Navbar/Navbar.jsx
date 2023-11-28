@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Hamburger from "hamburger-react";
-import "./Style/nav.css";
+import "../../../src/Style/nav.css";
 import logo from "../../assets/logo.png";
 import { AuthContext } from "../../Provider/AuthProvider";
 import profile from "../../assets/profile.jpg";
@@ -23,6 +23,10 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink to="/subscription">Subscription</NavLink>
+      </li>
+      {/* Admin routes below: */}
+      <li>
+        <NavLink to="/dashboard/adminHome">Dashboard</NavLink>
       </li>
     </>
   );
@@ -96,7 +100,7 @@ const Navbar = () => {
           </p>
         ) : (
           <div className="flex gap-1 items-center">
-            <Link to="/myProfile">
+            <Link to="/profile">
               <img
                 className="w-8 md:w-10 rounded-full"
                 src={user?.photoURL ? user.photoURL : profile}

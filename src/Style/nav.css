@@ -5,3 +5,7 @@
 #navbar #medium a.active {
   color: rgb(199, 139, 254);
 }
+
+#sidebar a.active {
+  color: white;
+}
