@@ -17,8 +17,17 @@ const Login = () => {
   const onSubmit = (data) => {
     setError(null);
     loginAccount(data.email, data.password)
-      .then(() => {
-        navigate(from);
+      .then((result) => {
+        const user = {
+          name: result?.user?.displayName,
+          email: result?.user?.email,
+          img: result?.user?.photoURL,
+        };
+        // console.log(user);
+        axiosInstance.post("/users", user).then((res) => {
+          console.log(res.data);
+          navigate(from);
+        });
       })
       .catch((err) => {
         console.log(err);

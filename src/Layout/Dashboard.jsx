@@ -56,7 +56,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div id="sidebar" className="hidden lg:flex">
-        <div className="grid grid-cols-5">
+        <div className="grid gap-6 grid-cols-5">
           <div className="col-span-1 bg-purple-500 bg-opacity-50 text-white py-14 px-10 min-h-screen overflow-y-auto">
             <div className="mb-10">
               <img className="w-36 mx-auto" src={logo} alt="" />
