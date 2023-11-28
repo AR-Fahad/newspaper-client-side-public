@@ -3,6 +3,7 @@ import { RiUser2Fill } from "react-icons/ri";
 import profile from "../../assets/profile.jpg";
 import Swal from "sweetalert2";
 import axiosInstance from "../../AxiosInstance/instance";
+import { Helmet } from "react-helmet-async";
 const AllUsers = () => {
   const { users, refetch } = useUsers();
   const makeAdmin = (user) => {
@@ -21,6 +22,9 @@ const AllUsers = () => {
   };
   return (
     <div className="py-10 mx-auto w-11/12">
+      <Helmet>
+        <title>NewsNook | Dashboard | AllUsers</title>
+      </Helmet>
       <h3 className="font-bold text-purple-500 text-3xl text-center">
         TOTAL USERS: {users.length}
       </h3>
