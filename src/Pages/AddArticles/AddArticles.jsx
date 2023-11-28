@@ -6,10 +6,12 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import moment from "moment/moment";
 import axiosInstance from "../../AxiosInstance/instance";
 import Swal from "sweetalert2";
+import usePublishers from "../../Hooks/usePublishers";
 const imageKey = import.meta.env.VITE_IMAGE_API_KEY;
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageKey}`;
 const AddArticles = () => {
   const { user } = useContext(AuthContext);
+  const { publishers } = usePublishers();
   const t = [
     { value: "#politics", label: "Politics" },
     { value: "#technology", label: "Technology" },
@@ -48,7 +50,7 @@ const AddArticles = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        // reset();
+        reset();
       }
     });
   };
@@ -99,12 +101,11 @@ const AddArticles = () => {
                   <option disabled value="">
                     Select...
                   </option>
-                  <option value="The New York Times">The New York Times</option>
-                  <option value="BBC News">BBC News</option>
-                  <option value="The Washington Post">
-                    The Washington Post
-                  </option>
-                  <option value="Reuters">Reuters</option>
+                  {publishers.map((publisher) => (
+                    <option key={publisher._id} value={publisher.publisher}>
+                      {publisher.publisher}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>

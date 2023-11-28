@@ -1,7 +1,7 @@
+import usePublishers from "../../../Hooks/usePublishers";
 import newspapers from "../../../assets/publishers-bg.jpg";
-import useArticles from "../../../useArticles/useArticles";
 const HomePublisher = () => {
-  const { articles } = useArticles();
+  const { publishers } = usePublishers();
   return (
     <div className="my-5">
       <h3 className="text-center uppercase text-purple-500 text-xl md:text-3xl font-bold">
@@ -17,14 +17,14 @@ const HomePublisher = () => {
         }}
         className="py-10 px-5 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 bg-fixed "
       >
-        {articles.map((article, idx) => (
-          <div key={idx} className="card bg-base-200">
+        {publishers.map((publisher) => (
+          <div key={publisher._id} className="card bg-base-100 shadow-xl">
             <div className="card-body">
-              <h2 className="card-title text-xl md:text-2xl lg:text-3xl font-bold">
-                {article.publisher}
-              </h2>
-              <p>Title: {article.title}</p>
+              <h2 className="card-title text-3xl">{publisher.publisher}</h2>
             </div>
+            <figure className="bg-white">
+              <img className="h-40" src={publisher.logo} alt="Shoes" />
+            </figure>
           </div>
         ))}
       </div>
