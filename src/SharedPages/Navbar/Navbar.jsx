@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <div
       id="navbar"
-      className={`navbar sticky transition-all duration-300 max-w-7xl z-20 text-white font-semibold bg-opacity-40 bg-purple-500 ${
+      className={`navbar sticky transition-all duration-300 max-w-7xl z-20 text-white font-semibold bg-opacity-50 bg-purple-500 ${
         isNavbarVisible ? `top-0` : `-top-20`
       }`}
     >
