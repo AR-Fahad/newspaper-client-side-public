@@ -58,7 +58,7 @@ const AddArticles = () => {
   return (
     <>
       <Helmet>
-        <title>NewsNook | addArticles</title>
+        <title>NewsNook | Add Articles</title>
       </Helmet>
       <div className="w-full py-10 px-2 md:w-4/5 mx-auto">
         <h3 className="text-3xl uppercase text-purple-500 font-bold text-center">

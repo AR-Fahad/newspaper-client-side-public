@@ -26,6 +26,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.20.0",
     "react-select": "^5.8.0",
+    "react-simple-typewriter": "^5.0.1",
     "reoverlay": "^1.0.3",
     "sort-by": "^0.0.2",
     "sweetalert2": "^11.10.1",

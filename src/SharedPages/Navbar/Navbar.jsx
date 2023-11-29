@@ -16,17 +16,21 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/myArticles">My Articles</NavLink>
-      </li>
-      <li>
-        <NavLink to="/addArticles">Add Articles</NavLink>
-      </li>
-      <li>
         <NavLink to="/allArticles">All Articles</NavLink>
       </li>
-      <li>
-        <NavLink to="/subscription">Subscription</NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to="/myArticles">My Articles</NavLink>
+          </li>
+          <li>
+            <NavLink to="/addArticles">Add Articles</NavLink>
+          </li>
+          <li>
+            <NavLink to="/subscription">Subscription</NavLink>
+          </li>
+        </>
+      )}
       {/* Admin routes below: */}
       <li>
         <NavLink to="/dashboard/adminHome">Dashboard</NavLink>

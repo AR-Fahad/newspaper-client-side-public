@@ -23,7 +23,7 @@ const AllUsers = () => {
   return (
     <div className="py-10 mx-auto w-11/12">
       <Helmet>
-        <title>NewsNook | Dashboard | AllUsers</title>
+        <title>NewsNook | Dashboard | All Users</title>
       </Helmet>
       <h3 className="font-bold text-purple-500 text-3xl text-center">
         TOTAL USERS: {users.length}

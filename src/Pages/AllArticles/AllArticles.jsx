@@ -105,7 +105,7 @@ const AllArticles = () => {
   return (
     <div className="py-10 px-1 md:px-5">
       <Helmet>
-        <title>NewsNook | Dashboard | AllArticles</title>
+        <title>NewsNook | Dashboard | All Articles</title>
       </Helmet>
       <h3 className="font-bold text-purple-500 text-3xl text-center">
         TOTAL ARTICLES: {articles.length}

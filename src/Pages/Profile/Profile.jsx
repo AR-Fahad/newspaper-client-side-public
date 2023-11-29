@@ -4,6 +4,7 @@ import profile from "../../assets/profile.jpg";
 import { useForm } from "react-hook-form";
 import axiosInstance from "../../AxiosInstance/instance";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 const Profile = () => {
   const { user, updateUser, loading, setLoading } = useContext(AuthContext);
   const [disable1, setDisable1] = useState(true);
@@ -54,6 +55,9 @@ const Profile = () => {
 
   return (
     <div className="my-10 px-1">
+      <Helmet>
+        <title>NewsNook | Profile</title>
+      </Helmet>
       <div>
         <div>
           <img

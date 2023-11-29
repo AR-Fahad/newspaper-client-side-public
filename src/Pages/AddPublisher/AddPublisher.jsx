@@ -38,7 +38,7 @@ const AddPublisher = () => {
   return (
     <>
       <Helmet>
-        <title>NewsNook | Dashboard | addPublisher</title>
+        <title>NewsNook | Dashboard | Add Publisher</title>
       </Helmet>
       <div className="w-full py-10 px-2 md:w-4/5 mx-auto">
         <h3 className="text-3xl uppercase text-purple-500 font-bold text-center">

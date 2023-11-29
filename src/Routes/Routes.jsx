@@ -15,6 +15,7 @@ import ArticleDetails from "../Pages/ArticleDetails/ArticleDetails";
 import axiosInstance from "../AxiosInstance/instance";
 import MyArticles from "../Pages/MyArticles/MyArticles";
 import UpdateArticle from "../Pages/UpdateArticle/UpdateArticle";
+import PrivateRoutes from "../SecuredRoutes/PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -27,11 +28,19 @@ const router = createBrowserRouter([
       },
       {
         path: "addArticles",
-        element: <AddArticles></AddArticles>,
+        element: (
+          <PrivateRoutes>
+            <AddArticles></AddArticles>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "profile",
-        element: <Profile></Profile>,
+        element: (
+          <PrivateRoutes>
+            <Profile></Profile>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "allArticles",
@@ -39,19 +48,31 @@ const router = createBrowserRouter([
       },
       {
         path: "articleDetails/:id",
-        element: <ArticleDetails></ArticleDetails>,
+        element: (
+          <PrivateRoutes>
+            <ArticleDetails></ArticleDetails>
+          </PrivateRoutes>
+        ),
         loader: ({ params }) =>
           axiosInstance.get(`/articles/${params.id}`).then((res) => res.data),
       },
       {
         path: "updateArticle/:id",
-        element: <UpdateArticle></UpdateArticle>,
+        element: (
+          <PrivateRoutes>
+            <UpdateArticle></UpdateArticle>
+          </PrivateRoutes>
+        ),
         loader: ({ params }) =>
           axiosInstance.get(`/articles/${params.id}`).then((res) => res.data),
       },
       {
         path: "myArticles",
-        element: <MyArticles></MyArticles>,
+        element: (
+          <PrivateRoutes>
+            <MyArticles></MyArticles>
+          </PrivateRoutes>
+        ),
       },
     ],
   },
@@ -66,7 +87,11 @@ const router = createBrowserRouter([
   // Note: Below admin routes
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoutes>
+        <Dashboard></Dashboard>
+      </PrivateRoutes>
+    ),
     children: [
       {
         path: "adminHome",

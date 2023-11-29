@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import axiosInstance from "../../../AxiosInstance/instance";
+import { Typewriter } from "react-simple-typewriter";
 const HomeSlider = () => {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
@@ -34,6 +35,28 @@ const HomeSlider = () => {
           </div>
         ))}
       </Carousel>
+      <br />
+      {articles.length !== 0 && (
+        <div>
+          <h3 className="text-center uppercase text-xl md:text-2xl font-bold">
+            some popular publishers:{" "}
+            <span className="text-purple-500">
+              <Typewriter
+                words={[
+                  articles[0]?.publisher,
+                  articles[1]?.publisher,
+                  articles[2]?.publisher,
+                  articles[3]?.publisher,
+                  articles[4]?.publisher,
+                  articles[5]?.publisher,
+                ]}
+                loop={false}
+              />
+            </span>
+          </h3>
+        </div>
+      )}
+      <br />
     </>
   );
 };

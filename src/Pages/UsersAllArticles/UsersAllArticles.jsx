@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../AxiosInstance/instance";
 import { Link, useNavigate } from "react-router-dom";
 import useUser from "../../Hooks/useUser";
+import { Helmet } from "react-helmet-async";
 
 const UsersAllArticles = () => {
   const { publishers } = usePublishers();
@@ -50,6 +51,9 @@ const UsersAllArticles = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>NewsNook | All Articles</title>
+      </Helmet>
       <h3 className="text-3xl font-bold my-5 text-center text-purple-500">
         ALL ARTICLES
       </h3>
@@ -111,7 +115,7 @@ const UsersAllArticles = () => {
             <div
               key={article._id}
               className={`card bg-base-100 shadow-xl ${
-                article?.isPremium ? "border-[2px] border-purple-500" : ""
+                article?.isPremium ? "shadow-purple-500" : ""
               }`}
             >
               <figure className="px-10 pt-10">
