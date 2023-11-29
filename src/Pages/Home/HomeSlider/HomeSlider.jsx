@@ -1,8 +1,16 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import useArticles from "../../../useArticles/useArticles";
+import axiosInstance from "../../../AxiosInstance/instance";
 const HomeSlider = () => {
-  const { articles } = useArticles();
+  const [articles, setArticles] = useState([]);
+  useEffect(() => {
+    axiosInstance.get("/articles").then((res) => {
+      const sortedData = res.data.slice(0, 6).sort((a, b) => b.views - a.views);
+      setArticles(sortedData);
+    });
+  }, []);
   return (
     <>
       <Carousel

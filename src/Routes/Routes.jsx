@@ -13,6 +13,7 @@ import Profile from "../Pages/Profile/Profile";
 import UsersAllArticles from "../Pages/UsersAllArticles/UsersAllArticles";
 import ArticleDetails from "../Pages/ArticleDetails/ArticleDetails";
 import axiosInstance from "../AxiosInstance/instance";
+import MyArticles from "../Pages/MyArticles/MyArticles";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
         element: <ArticleDetails></ArticleDetails>,
         loader: ({ params }) =>
           axiosInstance.get(`/articles/${params.id}`).then((res) => res.data),
+      },
+      {
+        path: "myArticles",
+        element: <MyArticles></MyArticles>,
       },
     ],
   },
