@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import axiosInstance from "../../AxiosInstance/instance";
 import Swal from "sweetalert2";
 import usePublishers from "../../Hooks/usePublishers";
+import { Helmet } from "react-helmet-async";
 const imageKey = import.meta.env.VITE_IMAGE_API_KEY;
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageKey}`;
 const AddPublisher = () => {
@@ -36,6 +37,9 @@ const AddPublisher = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>NewsNook | Dashboard | addPublisher</title>
+      </Helmet>
       <div className="w-full py-10 px-2 md:w-4/5 mx-auto">
         <h3 className="text-3xl uppercase text-purple-500 font-bold text-center">
           Add Publisher

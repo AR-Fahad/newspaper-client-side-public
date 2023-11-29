@@ -18,9 +18,11 @@ const HomePublisher = () => {
         className="py-10 px-5 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 bg-fixed "
       >
         {publishers.map((publisher) => (
-          <div key={publisher._id} className="card bg-base-100 shadow-xl">
+          <div key={publisher._id} className="card bg-base-200 shadow-xl">
             <div className="card-body">
-              <h2 className="card-title text-3xl">{publisher.publisher}</h2>
+              <h2 className="card-title text-3xl font-extrabold">
+                {publisher.publisher}
+              </h2>
             </div>
             <figure className="bg-white">
               <img className="h-40" src={publisher.logo} alt="Shoes" />

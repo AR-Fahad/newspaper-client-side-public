@@ -9,6 +9,8 @@ import AdminHome from "../Pages/AdminHome/AdminHome";
 import AllUsers from "../Pages/AllUsers/AllUsers";
 import AllArticles from "../Pages/AllArticles/AllArticles";
 import AddPublisher from "../Pages/AddPublisher/AddPublisher";
+import Profile from "../Pages/Profile/Profile";
+import UsersAllArticles from "../Pages/UsersAllArticles/UsersAllArticles";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
       {
         path: "addArticles",
         element: <AddArticles></AddArticles>,
+      },
+      {
+        path: "profile",
+        element: <Profile></Profile>,
+      },
+      {
+        path: "allArticles",
+        element: <UsersAllArticles></UsersAllArticles>,
       },
     ],
   },

@@ -7,17 +7,18 @@ import moment from "moment/moment";
 import axiosInstance from "../../AxiosInstance/instance";
 import Swal from "sweetalert2";
 import usePublishers from "../../Hooks/usePublishers";
+import { Helmet } from "react-helmet-async";
 const imageKey = import.meta.env.VITE_IMAGE_API_KEY;
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageKey}`;
 const AddArticles = () => {
   const { user } = useContext(AuthContext);
   const { publishers } = usePublishers();
   const t = [
-    { value: "#politics", label: "Politics" },
-    { value: "#technology", label: "Technology" },
-    { value: "#sports", label: "Sports" },
-    { value: "#education", label: "Education" },
-    { value: "#health", label: "Health" },
+    { value: "politics", label: "Politics" },
+    { value: "technology", label: "Technology" },
+    { value: "sports", label: "Sports" },
+    { value: "education", label: "Education" },
+    { value: "health", label: "Health" },
   ];
   const [tagsOption, setTagsOption] = useState(null);
   const { register, handleSubmit, reset } = useForm();
@@ -56,6 +57,9 @@ const AddArticles = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>NewsNook | addArticles</title>
+      </Helmet>
       <div className="w-full py-10 px-2 md:w-4/5 mx-auto">
         <h3 className="text-3xl uppercase text-purple-500 font-bold text-center">
           Add Articles
