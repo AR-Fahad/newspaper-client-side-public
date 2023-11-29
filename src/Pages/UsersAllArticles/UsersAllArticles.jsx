@@ -1,6 +1,8 @@
 import usePublishers from "../../Hooks/usePublishers";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../AxiosInstance/instance";
+import { Link, useNavigate } from "react-router-dom";
+import useUser from "../../Hooks/useUser";
 
 const UsersAllArticles = () => {
   const { publishers } = usePublishers();
@@ -8,6 +10,21 @@ const UsersAllArticles = () => {
   const [s, setS] = useState("");
   const [p, setP] = useState("");
   const [t, setT] = useState("");
+  const { userDetails } = useUser();
+  const navigate = useNavigate();
+
+  const handleDetails = (article) => {
+    const updateArticle = {
+      views: article?.views + 1,
+    };
+    axiosInstance
+      .patch(`/articles/${article?._id}`, updateArticle)
+      .then((res) => {
+        if (res.data?.modifiedCount === 1) {
+          navigate(`/articleDetails/${article._id}`);
+        }
+      });
+  };
 
   useEffect(() => {
     axiosInstance
@@ -111,15 +128,22 @@ const UsersAllArticles = () => {
                 )}
                 {article?.isPremium ? (
                   <div className="card-actions">
-                    <button className="btn btn-primary btn-sm" disabled>
+                    <Link
+                      onClick={() => handleDetails(article)}
+                      className={`btn btn-primary btn-sm ${
+                        !userDetails?.subscription ? "btn-disabled" : ""
+                      }`}
+                    >
                       Show Details
-                    </button>
+                    </Link>
                   </div>
                 ) : (
                   <div className="card-actions">
-                    <button className="btn btn-primary btn-sm">
-                      Show Details
-                    </button>
+                    <Link onClick={() => handleDetails(article)}>
+                      <button className="btn btn-primary btn-sm">
+                        Show Details
+                      </button>
+                    </Link>
                   </div>
                 )}
               </div>

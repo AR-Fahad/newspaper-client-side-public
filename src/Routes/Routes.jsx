@@ -11,6 +11,8 @@ import AllArticles from "../Pages/AllArticles/AllArticles";
 import AddPublisher from "../Pages/AddPublisher/AddPublisher";
 import Profile from "../Pages/Profile/Profile";
 import UsersAllArticles from "../Pages/UsersAllArticles/UsersAllArticles";
+import ArticleDetails from "../Pages/ArticleDetails/ArticleDetails";
+import axiosInstance from "../AxiosInstance/instance";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,12 @@ const router = createBrowserRouter([
       {
         path: "allArticles",
         element: <UsersAllArticles></UsersAllArticles>,
+      },
+      {
+        path: "articleDetails/:id",
+        element: <ArticleDetails></ArticleDetails>,
+        loader: ({ params }) =>
+          axiosInstance.get(`/articles/${params.id}`).then((res) => res.data),
       },
     ],
   },
