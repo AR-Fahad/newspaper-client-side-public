@@ -108,7 +108,7 @@ const MyArticles = () => {
                 </th>
                 <th>
                   <Link
-                    to={`/updateArticles/${article._id}`}
+                    to={`/updateArticle/${article._id}`}
                     className="btn btn-sm btn-outline border-purple-500 text-purple-500"
                   >
                     Update
