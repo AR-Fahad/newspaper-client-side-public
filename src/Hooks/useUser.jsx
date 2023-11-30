@@ -5,17 +5,19 @@ import axiosInstance from "../AxiosInstance/instance";
 
 const useUser = () => {
   const { user, loading } = useContext(AuthContext);
-  const { data: userDetails = {}, isPending } = useQuery({
+  const {
+    data: userDetails = {},
+    isPending,
+    refetch,
+  } = useQuery({
+    enabled: !loading,
     queryKey: ["user", user?.email],
     queryFn: async () => {
-      let res = {};
-      if (!loading) {
-        res = await axiosInstance.get(`/userDetails?email=${user?.email}`);
-      }
-      return res?.data;
+      const res = await axiosInstance.get(`/userDetails?email=${user?.email}`);
+      return res.data;
     },
   });
-  return { userDetails, isPending };
+  return { userDetails, isPending, refetch };
 };
 
 export default useUser;
