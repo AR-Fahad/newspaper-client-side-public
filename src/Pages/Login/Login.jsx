@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axiosInstance from "../../AxiosInstance/instance";
+import Swal from "sweetalert2";
 const Login = () => {
   const [error, setError] = useState(null);
   const { register, handleSubmit } = useForm();
@@ -26,6 +27,13 @@ const Login = () => {
         // console.log(user);
         axiosInstance.post("/users", user).then((res) => {
           console.log(res.data);
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Login successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
           navigate(from);
         });
       })
@@ -46,6 +54,13 @@ const Login = () => {
         // console.log(user);
         axiosInstance.post("/users", user).then((res) => {
           console.log(res.data);
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Login successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
           navigate(from);
         });
       })

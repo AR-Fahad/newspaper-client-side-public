@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import useUser from "../../Hooks/useUser";
 import ban from "../../assets/3079.jpg";
 import axiosInstance from "../../AxiosInstance/instance";
+import { Helmet } from "react-helmet-async";
 
 const Subscription = () => {
   const { userDetails, refetch } = useUser();
@@ -39,6 +40,9 @@ const Subscription = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>NewsNook | Subscription</title>
+      </Helmet>
       <div>
         <img src={ban} alt="" />
       </div>
