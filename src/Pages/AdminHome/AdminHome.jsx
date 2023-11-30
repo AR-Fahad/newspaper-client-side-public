@@ -6,7 +6,7 @@ import Chart from "react-google-charts";
 const AdminHome = () => {
   const { articles } = useAllArticles();
   const { publishers } = usePublishers();
-  const data = [["Task", "Per Publisher"]];
+  const data = [["Publisher", "Posted"]];
   publishers.forEach((publisher) => {
     data.push([
       publisher.publisher,
@@ -14,21 +14,30 @@ const AdminHome = () => {
         .length,
     ]);
   });
+  const options = {
+    title: "Each Publisher Total Posted Articles Percentage",
+    is3D: true,
+  };
+
   const options2 = {
     title: "Publishers Articles",
     curveType: "function",
     legend: { position: "bottom" },
   };
-  const options = {
-    title: "Publishers Articles Percentage",
+
+  const options3 = {
+    chart: {
+      title: "Posted Publishers",
+      subtitle: "Each Publisher Total Posted Articles",
+    },
   };
 
   return (
-    <div>
+    <div className="bg-white py-10">
       <Helmet>
         <title>NewsNook | Dashboard</title>
       </Helmet>
-      <div>
+      <div className="overflow-scroll">
         <Chart
           chartType="PieChart"
           data={data}
@@ -38,13 +47,25 @@ const AdminHome = () => {
         />
       </div>
       <br />
-      <div>
+      <br />
+      <div className="overflow-scroll">
         <Chart
           chartType="LineChart"
           width="100%"
           height="400px"
           data={data}
           options={options2}
+        />
+      </div>
+      <br />
+      <br />
+      <div className="overflow-scroll">
+        <Chart
+          chartType="Bar"
+          width="100%"
+          height="400px"
+          data={data}
+          options={options3}
         />
       </div>
     </div>
