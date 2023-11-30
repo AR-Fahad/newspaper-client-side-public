@@ -17,6 +17,8 @@ import MyArticles from "../Pages/MyArticles/MyArticles";
 import UpdateArticle from "../Pages/UpdateArticle/UpdateArticle";
 import PrivateRoutes from "../SecuredRoutes/PrivateRoutes";
 import PremiumArticles from "../Pages/PremiumArticles/PremiumArticles";
+import AdminRoutes from "../SecuredRoutes/AdminRoutes";
+import PremiumRoutes from "../SecuredRoutes/PremiumRoutes";
 
 const router = createBrowserRouter([
   {
@@ -38,9 +40,9 @@ const router = createBrowserRouter([
       {
         path: "premiumArticles",
         element: (
-          <PrivateRoutes>
+          <PremiumRoutes>
             <PremiumArticles></PremiumArticles>
-          </PrivateRoutes>
+          </PremiumRoutes>
         ),
       },
       {
@@ -97,9 +99,9 @@ const router = createBrowserRouter([
   {
     path: "dashboard",
     element: (
-      <PrivateRoutes>
+      <AdminRoutes>
         <Dashboard></Dashboard>
-      </PrivateRoutes>
+      </AdminRoutes>
     ),
     children: [
       {

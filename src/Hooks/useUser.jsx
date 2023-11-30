@@ -4,15 +4,18 @@ import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "../AxiosInstance/instance";
 
 const useUser = () => {
-  const { user } = useContext(AuthContext);
-  const { data: userDetails = {} } = useQuery({
+  const { user, loading } = useContext(AuthContext);
+  const { data: userDetails = {}, isPending } = useQuery({
     queryKey: ["user", user?.email],
-    queryFn: () =>
-      axiosInstance
-        .get(`/userDetails?email=${user?.email}`)
-        .then((res) => res.data),
+    queryFn: async () => {
+      let res = {};
+      if (!loading) {
+        res = await axiosInstance.get(`/userDetails?email=${user?.email}`);
+      }
+      return res?.data;
+    },
   });
-  return { userDetails };
+  return { userDetails, isPending };
 };
 
 export default useUser;

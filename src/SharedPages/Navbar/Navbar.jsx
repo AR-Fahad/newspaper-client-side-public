@@ -5,11 +5,13 @@ import "../../../src/Style/nav.css";
 import logo from "../../assets/logo.png";
 import { AuthContext } from "../../Provider/AuthProvider";
 import profile from "../../assets/profile.jpg";
+import useUser from "../../Hooks/useUser";
 const Navbar = () => {
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isOpen, setOpen] = useState(false);
   const { user, userLogout } = useContext(AuthContext);
+  const { userDetails } = useUser();
   const navLink = (
     <>
       <li>
@@ -29,15 +31,21 @@ const Navbar = () => {
           <li>
             <NavLink to="/subscription">Subscription</NavLink>
           </li>
-          <li>
-            <NavLink to="/premiumArticles">Premium Articles</NavLink>
-          </li>
+          {userDetails?.subscription && (
+            <>
+              <li>
+                <NavLink to="/premiumArticles">Premium Articles</NavLink>
+              </li>
+            </>
+          )}
         </>
       )}
       {/* Admin routes below: */}
-      <li>
-        <NavLink to="/dashboard/adminHome">Dashboard</NavLink>
-      </li>
+      {userDetails?.role === "admin" && (
+        <li>
+          <NavLink to="/dashboard/adminHome">Dashboard</NavLink>
+        </li>
+      )}
     </>
   );
 
