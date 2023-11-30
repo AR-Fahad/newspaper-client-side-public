@@ -8,7 +8,7 @@ const HomeSlider = () => {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
     axiosInstance.get("/articles").then((res) => {
-      const sortedData = res.data.slice(0, 6).sort((a, b) => b.views - a.views);
+      const sortedData = res.data.sort((a, b) => b.views - a.views).slice(0, 6);
       setArticles(sortedData);
     });
   }, []);
