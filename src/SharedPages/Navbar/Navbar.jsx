@@ -29,6 +29,9 @@ const Navbar = () => {
           <li>
             <NavLink to="/subscription">Subscription</NavLink>
           </li>
+          <li>
+            <NavLink to="/premiumArticles">Premium Articles</NavLink>
+          </li>
         </>
       )}
       {/* Admin routes below: */}

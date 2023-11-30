@@ -16,6 +16,7 @@ import axiosInstance from "../AxiosInstance/instance";
 import MyArticles from "../Pages/MyArticles/MyArticles";
 import UpdateArticle from "../Pages/UpdateArticle/UpdateArticle";
 import PrivateRoutes from "../SecuredRoutes/PrivateRoutes";
+import PremiumArticles from "../Pages/PremiumArticles/PremiumArticles";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <AddArticles></AddArticles>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "premiumArticles",
+        element: (
+          <PrivateRoutes>
+            <PremiumArticles></PremiumArticles>
           </PrivateRoutes>
         ),
       },
