@@ -19,6 +19,8 @@ const ArticleDetails = () => {
         Publisher: {article.publisher}
       </p>
       <p>Description: {article.description}</p>
+      <br />
+      <p className="text-xs">Posted Date: {article.postedDate}</p>
     </div>
   );
 };

@@ -1,11 +1,13 @@
 import usePublishers from "../../Hooks/usePublishers";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axiosInstance from "../../AxiosInstance/instance";
 import { Link, useNavigate } from "react-router-dom";
 import useUser from "../../Hooks/useUser";
 import { Helmet } from "react-helmet-async";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const UsersAllArticles = () => {
+  const { user } = useContext(AuthContext);
   const { publishers } = usePublishers();
   const [articles, setArticles] = useState([]);
   const [s, setS] = useState("");
@@ -15,6 +17,10 @@ const UsersAllArticles = () => {
   const navigate = useNavigate();
 
   const handleDetails = (article) => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
     const updateArticle = {
       views: article?.views + 1,
     };
@@ -114,7 +120,7 @@ const UsersAllArticles = () => {
           return (
             <div
               key={article._id}
-              className={`card bg-base-100 shadow-xl ${
+              className={`card bg-base-100 shadow-md ${
                 article?.isPremium ? "shadow-purple-500" : ""
               }`}
             >
@@ -124,7 +130,7 @@ const UsersAllArticles = () => {
               <div className="card-body items-center text-center">
                 <h2 className="card-title">{article.title}</h2>
                 <p>Publisher: {article.publisher}</p>
-                <p>{article.description}</p>
+                <p>{article.description.slice(0, 60)}...</p>
                 {article?.isPremium && (
                   <p className="text-xs font-semibold text-purple-500">
                     PREMIUM

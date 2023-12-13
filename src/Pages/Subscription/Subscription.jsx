@@ -52,7 +52,7 @@ const Subscription = () => {
             <select
               name="period"
               defaultValue=""
-              className="select select-secondary w-full"
+              className="select select-primary w-full"
             >
               <option value="" disabled>
                 Pick your subscription period
@@ -65,7 +65,7 @@ const Subscription = () => {
           <br />
           <div className="text-center">
             <input
-              className="btn btn-secondary text-white"
+              className="btn btn-primary text-white"
               type="submit"
               value="Make Payment"
             />
